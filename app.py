@@ -2,10 +2,17 @@ import os
 import streamlit as st
 import PyPDF2
 import google.generativeai as genai
+from dotenv import load_dotenv
 
-# Set up Google Gemini API Key
-GEMINI_API_KEY = "AIzaSyCqTj0Kp5jrBN5yUxXVU5ux_AW2taOsyP0"
-genai.configure(api_key=GEMINI_API_KEY)
+# Load environment variables from .env
+load_dotenv()
+
+# Get API key securely
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+
+# Configure Gemini
+genai.configure(api_key=gemini_api_key)
+
 
 # Streamlit UI
 st.set_page_config(page_title="AI Personal Finance Assistant", page_icon="💰", layout="wide")
